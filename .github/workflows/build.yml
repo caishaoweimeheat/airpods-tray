@@ -1,0 +1,41 @@
+name: Build Windows app
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '*.cs'
+      - '*.ps1'
+      - '*.ico'
+      - app.manifest
+      - QUICKSTART.txt
+      - LICENSE
+      - tests/Tests.cs
+      - .github/workflows/build.yml
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Compile and run existing checks
+        shell: pwsh
+        run: ./Build.ps1 -Test
+      - name: Package tested executable
+        shell: pwsh
+        run: ./Package.ps1 -SkipBuild
+      - name: Save Windows package
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: windows-package
+          path: dist/*.zip
+          if-no-files-found: error
+          retention-days: 30
