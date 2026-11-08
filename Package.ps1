@@ -9,7 +9,7 @@ New-Item -ItemType Directory -Path $stagePath -Force | Out-Null
 Copy-Item -LiteralPath $executablePath -Destination (Join-Path $stagePath 'AirPods4Tray.exe') -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'QUICKSTART.txt') -Destination (Join-Path $stagePath 'README.txt') -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'LICENSE') -Destination (Join-Path $stagePath 'LICENSE') -Force
-$releasePath = Join-Path $distPath 'AirPodsTray-0.2.1-beta-win-x64.zip'
+$releasePath = Join-Path $distPath 'AirPodsTray-0.2.2-beta-win-x64.zip'
 $payloadPaths = 'AirPods4Tray.exe','README.txt','LICENSE' | ForEach-Object { Join-Path $stagePath $_ }
 Compress-Archive -LiteralPath $payloadPaths -DestinationPath $releasePath -Force
 Get-FileHash -LiteralPath $releasePath -Algorithm SHA256 | Format-List

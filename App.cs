@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 [assembly: AssemblyTitle("AirPods Tray")]
 [assembly: AssemblyDescription("Choose a paired Bluetooth audio device and reconnect from the Windows tray.")]
-[assembly: AssemblyVersion("0.2.1.0")]
-[assembly: AssemblyFileVersion("0.2.1.0")]
+[assembly: AssemblyVersion("0.2.2.0")]
+[assembly: AssemblyFileVersion("0.2.2.0")]
 
 namespace AirPodsQuickConnect
 {
     internal static class Program
     {
-        internal const string Version = "0.2.1-beta";
+        internal const string Version = "0.2.2-beta";
         internal static readonly string Root = AppDomain.CurrentDomain.BaseDirectory;
         internal static readonly string DataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AirPodsTray");
         internal static string LogPath = Path.Combine(DataDirectory, "AirPodsTray.log");
@@ -110,7 +110,7 @@ namespace AirPodsQuickConnect
             startup = new StartupShortcut(StartupPath, Application.ExecutablePath, Program.Root);
             string warning; target = settings.Load(out warning);
             SynchronizationContext.SetSynchronizationContext(new WindowsFormsSynchronizationContext());
-            idleIcon = Artwork.Make(Color.FromArgb(255, 140, 0));
+            idleIcon = Artwork.Make(Color.FromArgb(43, 133, 190));
             connectedIcon = Artwork.Make(Color.FromArgb(31, 160, 103));
             busyIcon = Artwork.Make(Color.FromArgb(224, 159, 38));
             menu = new ContextMenuStrip();
@@ -126,7 +126,7 @@ namespace AirPodsQuickConnect
             menu.Items.Add("声音设置", null, delegate { Program.Open("ms-settings:sound"); });
             menu.Items.Add(new ToolStripSeparator()); menu.Items.Add(startupItem);
             menu.Items.Add("查看日志", null, delegate { Program.Log("Log opened."); Program.Open(Program.LogPath); });
-            menu.Items.Add("关于", null, delegate { MessageBox.Show("AirPods Tray " + Program.Version + "\n\n左键连接目标耳机；右键更换目标。\n橙色：未连接；黄色：连接中；绿色：已连接。", "AirPods Tray", MessageBoxButtons.OK, MessageBoxIcon.Information); });
+            menu.Items.Add("关于", null, delegate { MessageBox.Show("AirPods Tray " + Program.Version + "\n\n左键连接目标耳机；右键更换目标。\n蓝色：未连接；黄色：连接中；绿色：已连接。", "AirPods Tray", MessageBoxButtons.OK, MessageBoxIcon.Information); });
             menu.Items.Add("退出", null, delegate { ExitThread(); });
             icon = new NotifyIcon { Icon = idleIcon, Text = "AirPods Tray · 选择目标耳机", ContextMenuStrip = menu, Visible = true };
             icon.MouseClick += delegate(object sender, MouseEventArgs e) { if (e.Button == MouseButtons.Left) Connect(); };
