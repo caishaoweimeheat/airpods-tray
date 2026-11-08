@@ -4,7 +4,7 @@
 
 ## 本次测试版
 
-`v0.2.0-beta` 使用已经在本机检查过的运行包，不在发布流程中重新编译。运行包、对应源码提交和 SHA-256 均写入 `release-manifest.json`，说明位于 `docs/releases/v0.2.0-beta.md`。
+`v0.2.1-beta` 使用 **Build Windows app** 流程编译并通过检查的运行包；**Publish tested release** 流程不重新编译。运行包、对应源码提交和 SHA-256 均写入 `release-manifest.json`，说明位于 `docs/releases/v0.2.1-beta.md`。
 
 发布流程会先核对压缩包内容与校验值，再创建草稿，上传运行包和 `SHA256SUMS.txt`，检查上传结果后公开为 Pre-release。重跑时会校验既有版本，不覆盖已发布文件。
 
@@ -19,6 +19,8 @@
 7. 确认 Actions 成功、Release 中有运行包和校验文件，再更新 README 中的下载链接。
 
 流程只使用 GitHub 为当前任务提供的令牌，权限限于仓库内容读写，无需设置个人访问令牌。清单中的仓库名称必须与执行仓库一致，分叉仓库需要先修改清单。
+
+也可使用 **Build Windows app** 的 `windows-package` 构建产物作为第 2 步的运行包：先核对构建成功，下载产物并取出内层 ZIP，保留原始字节，记录对应的源码提交。云端自动检查不能替代真实蓝牙耳机的重连测试。
 
 本地检查发布逻辑（需要 Python 3.9 或以上，应用用户无需 Python）：
 

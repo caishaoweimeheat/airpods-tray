@@ -1,10 +1,10 @@
 {
   "repository": "caishaoweimeheat/airpods-tray",
-  "tag": "v0.2.0-beta",
-  "title": "AirPods Tray 0.2.0-beta · Windows 蓝牙耳机一键连接",
-  "target_commit": "0288ae66de7b796e9e5bf1131f6631f60a460507",
+  "tag": "v0.2.1-beta",
+  "title": "AirPods Tray 0.2.1-beta · 绿色已连接，橙色未连接",
+  "target_commit": "b411799dfee606d5ff2c910414eb4c67d57a17fa",
   "prerelease": true,
-  "asset": "downloads/AirPodsTray-0.2.0-beta-win-x64.zip",
-  "sha256": "c3273e3b329554fa09585205ad36cf579ec083ea04720daf3faa0fd1996ba48d",
-  "notes": "docs/releases/v0.2.0-beta.md"
+  "asset": "downloads/AirPodsTray-0.2.1-beta-win-x64.zip",
+  "sha256": "21c74eeec013b6b61e15352106db9933cf229eae85b088422d944cbfe24e1107",
+  "notes": "docs/releases/v0.2.1-beta.md"
 }
