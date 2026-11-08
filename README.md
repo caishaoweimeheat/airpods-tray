@@ -2,15 +2,15 @@
 
 A lightweight Windows tray app for reconnecting to a selected, already-paired Bluetooth audio device.
 
-**Windows 蓝牙耳机一键连接工具 · 0.2.0-beta**
+**Windows 蓝牙耳机一键连接工具 · 0.2.1-beta**
 
 从已配对的蓝牙音频设备中选定目标，之后左键单击托盘图标即可请求连接。支持设备选择与记忆；名称不再固定为 AirPods 4。
 
 ## 下载与运行
 
-**[下载 Windows x64 运行包](https://github.com/caishaoweimeheat/airpods-tray/releases/download/v0.2.0-beta/AirPodsTray-0.2.0-beta-win-x64.zip)** · [查看版本说明](https://github.com/caishaoweimeheat/airpods-tray/releases/tag/v0.2.0-beta) · [SHA-256 校验文件](https://github.com/caishaoweimeheat/airpods-tray/releases/download/v0.2.0-beta/SHA256SUMS.txt)
+**[下载 Windows x64 运行包](https://github.com/caishaoweimeheat/airpods-tray/releases/download/v0.2.1-beta/AirPodsTray-0.2.1-beta-win-x64.zip)** · [查看版本说明](https://github.com/caishaoweimeheat/airpods-tray/releases/tag/v0.2.1-beta) · [SHA-256 校验文件](https://github.com/caishaoweimeheat/airpods-tray/releases/download/v0.2.1-beta/SHA256SUMS.txt)
 
-当前版本为 **0.2.0-beta 公开测试版**。下载运行包，完整解压后运行 `AirPods4Tray.exe`，无需自行编译。Release 中的 `Source code` 是开发用源码；普通用户请选择上面的 Windows 运行包。
+当前版本为 **0.2.1-beta 公开测试版**。下载运行包，完整解压后运行 `AirPods4Tray.exe`，无需自行编译。Release 中的 `Source code` 是开发用源码；普通用户请选择上面的 Windows 运行包。
 
 1. 首次运行，在弹出的窗口中选择耳机，点击 **设为目标耳机**。
 2. 将右下角 `^` 中的耳机图标拖到任务栏常显区域。
@@ -25,7 +25,7 @@ A lightweight Windows tray app for reconnecting to a selected, already-paired Bl
 - 记住所选设备，退出程序或重启后继续使用。
 - 以设备容器 ID 识别目标，改名后仍可匹配；缺少容器 ID 时使用精确端点 ID。
 - 按设备标识区分同名耳机。目标缺失时提示检查，不自动连接其他同名设备。
-- 托盘颜色：蓝色未连接、黄色连接中、绿色播放端点已连接。
+- 托盘颜色：橙色未连接、黄色连接中、绿色播放端点已连接。
 - 单实例、状态刷新、普通用户开机启动、蓝牙/声音设置入口和本地日志。
 - 已连接时直接提示，无需重复连接。
 
@@ -34,7 +34,8 @@ A lightweight Windows tray app for reconnecting to a selected, already-paired Bl
 - 64 位 Windows 10/11，.NET Framework 4.5 或以上；开发验证环境为 Windows 11 x64 / .NET Framework 4.8。
 - 使用 `KSPROPSETID_BtAudio / KSPROPERTY_ONESHOT_RECONNECT`；列表仅显示提供该接口的播放设备。
 - 不依赖额外 Python、第三方蓝牙工具或管理员权限。
-- 已在 Windows 11 + AirPods 4 上验证设备枚举、接口支持、选择保存和已连接状态处理。
+- 0.2.0-beta 已在 Windows 11 + AirPods 4 上验证设备枚举、接口支持、选择保存和已连接状态处理。
+- 0.2.1-beta 已在 GitHub Windows 构建环境编译，通过 23 项自动检查；新版实际桌面托盘显示仍需手动验证。
 - **尚未完成主动断开后的硬件重连实测，也未验证其他耳机型号。此版本为测试版。**
 - Bluetooth LE Audio 专用设备或不提供上述接口的驱动可能不出现在列表中。
 - 只连接已配对的设备，不执行首次配对。
@@ -52,7 +53,7 @@ A lightweight Windows tray app for reconnecting to a selected, already-paired Bl
 
 配置和日志位于当前用户的 `%LOCALAPPDATA%\AirPodsTray\`，分别为 `settings.xml` 和 `AirPodsTray.log`。
 
-从旧版升级：先在旧托盘图标菜单中选择“退出”，再启动新版。首次升级需要选择一次设备。程序移动目录后，请在新版中重新勾选“开机启动”，使快捷方式指向新位置。
+从旧版升级：先在旧托盘图标菜单中选择“退出”，再启动新版。从 0.2.0-beta 升级会保留已选耳机；从更早版本升级时可能需要重新选择。程序移动目录后，请在新版中重新勾选“开机启动”，使快捷方式指向新位置。
 
 卸载：取消“开机启动”、退出程序后删除程序目录。若需清除历史选择，可再删除上述配置目录。
 
