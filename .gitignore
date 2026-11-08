@@ -1,0 +1,13 @@
+bin/
+obj/
+dist/
+.vs/
+*.exe
+*.pdb
+*.log
+*.zip
+!downloads/AirPodsTray-0.2.0-beta-win-x64.zip
+*.user
+*.suo
+settings.xml
+test-results/
