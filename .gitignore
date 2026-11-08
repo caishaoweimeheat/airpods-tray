@@ -8,6 +8,7 @@ dist/
 *.zip
 !downloads/AirPodsTray-0.2.0-beta-win-x64.zip
 !downloads/AirPodsTray-0.2.1-beta-win-x64.zip
+!downloads/AirPodsTray-0.2.2-beta-win-x64.zip
 *.user
 *.suo
 settings.xml

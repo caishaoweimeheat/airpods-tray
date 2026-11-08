@@ -1,5 +1,11 @@
 # Testing
 
+## 0.2.2-beta 自动构建记录
+
+2026-11-08，在 GitHub Windows 构建环境中编译，通过现有 23 项检查。[查看构建日志](https://github.com/caishaoweimeheat/airpods-tray/actions/runs/42473102176)。运行包版本、蓝色未连接说明和 SHA-256 已与构建输出核对一致。
+
+构建环境没有可用蓝牙耳机，实际桌面托盘显示及硬件断开重连仍待手动验证。
+
 ## 0.2.1-beta 自动构建记录
 
 2026-11-08，在 GitHub Windows Server 2025 构建环境中编译，通过现有 23 项检查，涵盖设备身份匹配、配置保存、启动快捷方式和选择窗口交互。[查看构建日志](https://github.com/caishaoweimeheat/airpods-tray/actions/runs/42472189620)。

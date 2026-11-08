@@ -4,7 +4,7 @@
 
 ## 本次测试版
 
-`v0.2.1-beta` 使用 **Build Windows app** 流程编译并通过检查的运行包；**Publish tested release** 流程不重新编译。运行包、对应源码提交和 SHA-256 均写入 `release-manifest.json`，说明位于 `docs/releases/v0.2.1-beta.md`。
+`v0.2.2-beta` 使用 **Build Windows app** 流程编译并通过检查的运行包；**Publish tested release** 流程不重新编译。运行包、对应源码提交和 SHA-256 均写入 `release-manifest.json`，说明位于 `docs/releases/v0.2.2-beta.md`。
 
 发布流程会先核对压缩包内容与校验值，再创建草稿，上传运行包和 `SHA256SUMS.txt`，检查上传结果后公开为 Pre-release。重跑时会校验既有版本，不覆盖已发布文件。
 
