@@ -8,9 +8,9 @@ A lightweight Windows tray app for reconnecting to a selected, already-paired Bl
 
 ## 下载与运行
 
-**[下载 Windows x64 运行包](https://github.com/caishaoweimeheat/airpods-tray/raw/refs/heads/main/downloads/AirPodsTray-0.2.0-beta-win-x64.zip)**
+**[下载 Windows x64 运行包](https://github.com/caishaoweimeheat/airpods-tray/releases/download/v0.2.0-beta/AirPodsTray-0.2.0-beta-win-x64.zip)** · [查看版本说明](https://github.com/caishaoweimeheat/airpods-tray/releases/tag/v0.2.0-beta) · [SHA-256 校验文件](https://github.com/caishaoweimeheat/airpods-tray/releases/download/v0.2.0-beta/SHA256SUMS.txt)
 
-解压后运行 `AirPods4Tray.exe`。当前测试版运行包位于仓库的 `downloads/` 目录；尚未创建 GitHub Release。源码根目录没有编译后的主程序，需要运行下文的构建脚本。
+当前版本为 **0.2.0-beta 公开测试版**。下载运行包，完整解压后运行 `AirPods4Tray.exe`，无需自行编译。Release 中的 `Source code` 是开发用源码；普通用户请选择上面的 Windows 运行包。
 
 1. 首次运行，在弹出的窗口中选择耳机，点击 **设为目标耳机**。
 2. 将右下角 `^` 中的耳机图标拖到任务栏常显区域。
@@ -76,7 +76,11 @@ A lightweight Windows tray app for reconnecting to a selected, already-paired Bl
 .\bin\AirPods4Tray.exe --diagnose "C:\完整路径\diagnostic.txt"
 ```
 
-完整验证范围见 [TESTING.md](TESTING.md)，版本变化见 [CHANGELOG.md](CHANGELOG.md)，首次上传方法见 [PUBLISHING.md](PUBLISHING.md)。
+完整验证范围见 [TESTING.md](TESTING.md)，版本变化见 [CHANGELOG.md](CHANGELOG.md)，版本发布与维护方法见 [PUBLISHING.md](PUBLISHING.md)。
+
+## 反馈问题
+
+请在 [Issues](https://github.com/caishaoweimeheat/airpods-tray/issues) 中提供 Windows 版本、耳机型号、复现步骤和错误码。兼容性反馈请说明设备是否出现在列表、是否成功连接、是否能播放声音。分享日志前请删除个人设备标识。
 
 ## 接口资料
 
