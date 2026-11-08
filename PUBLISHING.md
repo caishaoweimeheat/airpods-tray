@@ -1,14 +1,36 @@
-# 首次发布到 GitHub
+# 发布与维护
 
-建议仓库名：`airpods-tray`。
+仓库：<https://github.com/caishaoweimeheat/airpods-tray>
 
-1. 在 GitHub 新建仓库。上传此源码目录的内容，使 `README.md` 直接位于仓库根目录。
-2. 如果先在本地使用 Git，执行 `git init`，再提交源码并连接你自己的远程仓库。`.gitignore` 已排除配置、日志和编译文件。
-3. 在 Windows 运行 `Build.ps1 -Test`。完成 `TESTING.md` 中与你的发布声明有关的手动检查。
-4. 运行 `Package.ps1 -SkipBuild`，得到 `dist/AirPodsTray-0.2.0-beta-win-x64.zip`。
-5. 在 GitHub Releases 创建标签 `v0.2.0-beta`，标记为 Pre-release，上传该运行包。
-6. 发布说明列出本次设备选择功能、测试环境和仍未完成的测试项目。
+## 本次测试版
 
-本源码包已包含 MIT 许可证。发布前确认你希望按该许可证分享代码。
+`v0.2.0-beta` 使用已经在本机检查过的运行包，不在发布流程中重新编译。运行包、对应源码提交和 SHA-256 均写入 `release-manifest.json`，说明位于 `docs/releases/v0.2.0-beta.md`。
 
-当前仓库提供 `downloads/AirPodsTray-0.2.0-beta-win-x64.zip` 直接下载。正式创建 Release 后，可更新 README 的下载入口。
+发布流程会先核对压缩包内容与校验值，再创建草稿，上传运行包和 `SHA256SUMS.txt`，检查上传结果后公开为 Pre-release。重跑时会校验既有版本，不覆盖已发布文件。
+
+## 发布新版本
+
+1. 修改代码和版本号，在 Windows 执行 `Build.ps1 -Test`，并完成 `TESTING.md` 中本次声明涉及的硬件测试。
+2. 执行 `Package.ps1 -SkipBuild`，把测试过的运行包放进 `downloads/`，并在 `.gitignore` 中允许提交该版本的 ZIP。
+3. 提交源码、运行包和验证记录，记下这个提交的完整 SHA。
+4. 在 `docs/releases/` 编写该版本说明，明确功能、运行条件和未验证项目。
+5. 更新 `release-manifest.json` 中的标签、标题、源码提交、运行包路径、SHA-256、说明路径和测试版标志。请使用新标签，不复用已发布标签。
+6. 将清单提交到 `main`，会启动 **Publish tested release**。也可以在 GitHub 的 Actions 页面选择该流程，再点击 **Run workflow**。
+7. 确认 Actions 成功、Release 中有运行包和校验文件，再更新 README 中的下载链接。
+
+流程只使用 GitHub 为当前任务提供的令牌，权限限于仓库内容读写，无需设置个人访问令牌。清单中的仓库名称必须与执行仓库一致，分叉仓库需要先修改清单。
+
+本地检查发布逻辑（需要 Python 3.9 或以上，应用用户无需 Python）：
+
+```powershell
+python -m unittest discover -s tests -p '*_test.py' -v
+Get-FileHash .\downloads\AirPodsTray-0.2.0-beta-win-x64.zip -Algorithm SHA256
+```
+
+如果流程失败，请查看 Actions 日志。上传失败时可能保留未公开的草稿；文件一致时重跑会继续上传。文件或标签发生冲突时，流程停止，由维护者检查，不能直接覆盖旧版本。
+
+## 手动发布备用方法
+
+在仓库 Releases 页面创建版本，填入清单中的标签，并以 `target_commit` 指定的源码提交为基准。粘贴对应版本说明，上传运行包及校验文件，按清单设置 Pre-release 后发布。
+
+运行包下载用于直接使用，GitHub 自动生成的 Source code 用于查看和编译源码。

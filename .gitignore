@@ -11,3 +11,5 @@ dist/
 *.suo
 settings.xml
 test-results/
+__pycache__/
+*.pyc

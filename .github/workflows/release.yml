@@ -1,0 +1,33 @@
+name: Publish tested release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [release-manifest.json]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out release files
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Test release validation
+        run: python3 -m unittest discover -s tests -p '*_test.py' -v
+      - name: Publish verified package and checksums
+        run: python3 scripts/publish_release.py
+        env:
+          GH_TOKEN: ${{ github.token }}
